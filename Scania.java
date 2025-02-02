@@ -22,7 +22,7 @@ public class Scania extends Truck {
 
     public double getFlatbedAngle() {
 
-        return flatbedAngle;
+        return flatbedAngle; //123
 
     }
 
