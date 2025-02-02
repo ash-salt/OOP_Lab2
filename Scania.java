@@ -33,7 +33,7 @@ public class Scania extends Car {
 
          double newAngle = flatbedAngle + amount;
 
-         // Vinkeln på flaket kan inte vara lägre än 0 eller högre än 70.
+         // "Vinkeln på flaket kan inte vara lägre än 0 eller högre än 70."
          if (newAngle < 0 || newAngle > 70) {
 
              throw new IllegalArgumentException("Angivet värde är ogiltigt, flakets min-och-maxlutningar är 0° respektive 70°.");
@@ -47,7 +47,7 @@ public class Scania extends Car {
     @Override
     public void gas(double amount) {
 
-        // [...] lastbilen ska inte kunna köra om flaket är uppfällt.
+        // "[...] lastbilen ska inte kunna köra om flaket är uppfällt."
         if (getFlatbedAngle() == 0) {
 
             super.gas(amount);
