@@ -1,7 +1,7 @@
 import java.awt.*;
 
 // Scania är en lastbil med ett flak som ska kunna tippas och sänkas.
-public class Scania extends Car {
+public class Scania extends Truck {
 
     // FlatbedAngle betecknar flakets vinkel till lastbilen.
     private double flatbedAngle;
@@ -15,9 +15,14 @@ public class Scania extends Car {
 
     }
 
+    @Override
+    public boolean getRampUp() {
+        return flatbedAngle > 0;
+    }
+
     public double getFlatbedAngle() {
 
-        return this.flatbedAngle;
+        return flatbedAngle;
 
     }
 
@@ -40,25 +45,8 @@ public class Scania extends Car {
 
         }
 
-         this.flatbedAngle = newAngle;
+         flatbedAngle = newAngle;
 
     }
 
-    @Override
-    public void gas(double amount) {
-
-        // "[...] lastbilen ska inte kunna köra om flaket är uppfällt."
-        if (getFlatbedAngle() == 0) {
-
-            super.gas(amount);
-
-        }
-
-        else {
-
-            throw new IllegalStateException("Fordonets flak är tippat! Flaket måste sänkas till 0° innan färd.");
-
-        }
-
-    }
 }

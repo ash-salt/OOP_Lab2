@@ -77,6 +77,14 @@ public abstract class Car implements Movable{
         return pos;
     }
 
+    protected void setPos(double[] pos){
+        if (pos.length != 2) {
+            throw new IllegalArgumentException("incorrect argument length");
+        }
+        x = pos[0];
+        y = pos[1];
+    }
+
     //Rör sig enligt ett x/y grid beroende på riktning
     public void move() {
         switch (direction) {
