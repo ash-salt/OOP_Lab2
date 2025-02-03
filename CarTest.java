@@ -1,8 +1,10 @@
-import org.junit.Test;
-
 import java.awt.*;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CarTest {
 
     @Test
@@ -90,6 +92,22 @@ public class CarTest {
         car.setTurboOn();
 
         assertEquals(1.625, car.speedFactor(), 0.0001);
+    }
+
+    // Just nu är detta testet broken
+    @Test
+    public void scaniaFlatBedTest() {
+
+        Scania truck = new Scania();
+
+        truck.adjustFlatbed(5);
+
+        truck.startEngine();
+
+        Exception exception = assertThrows(IllegalStateException.class, truck::move);
+
+        assertEquals("Fordonets flak är tippat! Flaket måste sänkas till 0° innan färd.", exception.getMessage());
+
     }
 
 }

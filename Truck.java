@@ -10,15 +10,19 @@ public abstract class Truck extends Car {
     }
 
     public boolean getRampUp() {
+
         return rampUp;
+
     }
 
     public void adjustFlatbed() {
+
         if (getCurrentSpeed() != 0) {
 
             throw new IllegalStateException("Fordonet är i rörelse, kan inte justera flaket!");
 
         }
+
         rampUp = !rampUp;
     }
 
