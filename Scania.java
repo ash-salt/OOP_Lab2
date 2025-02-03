@@ -4,6 +4,7 @@ import java.awt.*;
 public class Scania extends Truck {
 
     // FlatbedAngle betecknar flakets vinkel till lastbilen.
+
     private double flatbedAngle;
 
     public Scania() {
