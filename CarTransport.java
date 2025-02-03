@@ -31,6 +31,7 @@ public class CarTransport extends Truck{
 
         storage.add(c);
         c.setPos(getPos());
+        c.setStored();
 
     }
 
@@ -41,6 +42,7 @@ public class CarTransport extends Truck{
         Car lastCar = storage.getLast();
         double[] newPos = new double[] {getPos()[0] - 0.25, getPos()[1] - 0.25};
         lastCar.setPos(newPos);
+        lastCar.setNotStored();
         storage.remove(lastCar);
     }
 
