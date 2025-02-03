@@ -27,6 +27,14 @@ public abstract class Truck extends Car {
     }
 
     @Override
+    public void move() {
+        if (getRampUp()){
+            throw new IllegalStateException("Fordonets flak är tippat! Flaket måste sänkas till 0° innan färd.");
+        }
+        super.move();
+    }
+
+    @Override
     public void gas(double amount) {
 
         // "[...] lastbilen ska inte kunna köra om flaket är uppfällt."

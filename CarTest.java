@@ -102,8 +102,6 @@ public class CarTest {
 
         truck.adjustFlatbed(5);
 
-        truck.startEngine();
-
         Exception exception = assertThrows(IllegalStateException.class, truck::move);
 
         assertEquals("Fordonets flak är tippat! Flaket måste sänkas till 0° innan färd.", exception.getMessage());
