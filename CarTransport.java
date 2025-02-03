@@ -33,4 +33,41 @@ public class CarTransport extends Truck{
         c.setPos(getPos());
 
     }
+
+    public void unloadLastCar() {
+        if (!getRampUp()) {
+            throw new IllegalStateException("Ramp needs to be extended to perform this action");
+        }
+        Car lastCar = storage.getLast();
+        double[] newPos = new double[] {getPos()[0] - 0.25, getPos()[1] - 0.25};
+        lastCar.setPos(newPos);
+        storage.remove(lastCar);
+    }
+
+    public void updatePos() {
+        for (Car car : storage) {
+            car.setPos(getPos());
+        }
+    }
+
+    @Override
+    public void move() {
+        super.move();
+        updatePos();
+    }
+
+
+    @Override
+    public void gas(double amount) {
+        super.gas(amount);
+        updatePos();
+    }
+
+    @Override
+    public void brake(double amount) {
+        super.brake(amount);
+        updatePos();
+    }
+
+
 }
