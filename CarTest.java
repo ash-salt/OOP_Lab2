@@ -108,4 +108,31 @@ public class CarTest {
 
     }
 
+    @Test
+    public void carStoredTest() {
+        Car c = new Volvo240();
+        CarTransport ct = new CarTransport();
+
+        ct.adjustFlatbed();
+
+        ct.loadCar(c);
+
+        Exception exception = assertThrows(IllegalStateException.class, c::startEngine);
+
+        assertEquals("This action cannot be performed as this vehicle is currently stored", exception.getMessage());
+    }
+
+    @Test
+    public void storeTruckErrorTest() {
+        Scania scania = new Scania();
+        CarTransport ct = new CarTransport();
+
+        ct.adjustFlatbed();
+
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> ct.loadCar(scania));
+
+        assertEquals("Vehicle is too large", exception.getMessage());
+    }
+
 }

@@ -27,6 +27,16 @@ public class Scania extends Truck {
 
     }
 
+    @Override
+    public void adjustFlatbed() {
+        if (getRampUp()) {
+            flatbedAngle = 0;
+        }
+        else {
+            flatbedAngle = 35;
+        }
+    }
+
     // Några regler för flaket angavs i labben, denna kod följer dessa;
     public void adjustFlatbed(double amount) {
 

@@ -33,6 +33,10 @@ public abstract class Car implements Movable{
     }
     public String getModel() { return modelName;}
 
+    public boolean getStored() {
+        return stored;
+    }
+
     protected void setStored() {
         stopEngine();
         stored = true;
@@ -41,7 +45,7 @@ public abstract class Car implements Movable{
     protected void setNotStored() {stored = false;}
 
     private void checkStored() {
-        if (stored) {
+        if (getStored()) {
             throw new IllegalStateException("This action cannot be performed as this vehicle is currently stored");
         }
     }
