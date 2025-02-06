@@ -135,4 +135,13 @@ public class CarTest {
         assertEquals("Vehicle is too large", exception.getMessage());
     }
 
+    @Test
+    public void CarShopTest() {
+        CarShop<Volvo240> cs = new CarShop<Volvo240>(10);
+        Volvo240 v = new Volvo240();
+        cs.loadCar(v);
+        assertEquals(true, v.getStored());
+
+    }
+
 }
