@@ -52,6 +52,13 @@ public class Scania extends Car implements HasFlatBed {
          flatbedAngle = angle;
 
     }
+
+    @Override
+    public void startEngine() {
+        checkRampUp();
+        super.startEngine();
+    }
+
     @Override
     public void move() {
         checkRampUp();

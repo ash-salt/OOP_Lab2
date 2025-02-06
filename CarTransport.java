@@ -38,13 +38,13 @@ public class CarTransport extends Car implements HasFlatBed{
         if (storage.size() == capacity) {
             throw new ArrayIndexOutOfBoundsException("Car Transport is already at maximum capacity");
         }
-        if (!getRampUp()) {
+        else if (!getRampUp()) {
             throw new IllegalStateException("Ramp is not deployed");
         }
-        if (Math.abs(transportPos[0] - cPos[0]) > 0.5 || Math.abs(transportPos[1] - cPos[1]) > 0.5) {
+        else if(Math.abs(transportPos[0] - cPos[0]) > 0.5 || Math.abs(transportPos[1] - cPos[1]) > 0.5) {
             throw new IllegalStateException("Car is too far away");
         }
-        if (c instanceof HasFlatBed) {
+        else if (c instanceof HasFlatBed) {
             throw new IllegalArgumentException("Vehicle is too large");
         }
 
@@ -65,17 +65,20 @@ public class CarTransport extends Car implements HasFlatBed{
         storage.remove(lastCar);
     }
 
-    public void updatePos() {
-        for (Car car : storage) {
-            car.setPos(getPos());
-        }
+
+    @Override
+    public void startEngine() {
+        checkRampUp();
+        super.startEngine();
     }
 
     @Override
     public void move() {
         checkRampUp();
         super.move();
-        updatePos();
+        for (Car car : storage) {
+            car.setPos(getPos());
+        }
     }
 
 
@@ -83,13 +86,11 @@ public class CarTransport extends Car implements HasFlatBed{
     public void gas(double amount) {
         checkRampUp();
         super.gas(amount);
-        updatePos();
     }
 
     @Override
     public void brake(double amount) {
         super.brake(amount);
-        updatePos();
     }
 
 
