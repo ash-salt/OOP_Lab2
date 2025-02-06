@@ -22,6 +22,7 @@ public class Scania extends Car implements HasFlatBed {
         }
     }
 
+    @Override
     public boolean getRampUp() {
         return getFlatbedAngle() > 0;
     }
@@ -32,6 +33,7 @@ public class Scania extends Car implements HasFlatBed {
 
     }
 
+    @Override
     public void adjustFlatbed() {
         adjustFlatbed(35);
     }
