@@ -16,14 +16,16 @@ public class CarTransport extends Car implements HasFlatBed{
 
     public void checkRampUp() {
         if (getRampUp()) {
-            throw new IllegalStateException("Fordonets flak är tippat! Flaket måste sänkas till 0° innan färd.");
+            throw new IllegalStateException("Fordonets flak är tippat! Flaket måste sänkas innan färd.");
         }
     }
 
+    @Override
     public boolean getRampUp() {
         return rampUp;
     }
 
+    @Override
     public void adjustFlatbed() {
         if (getCurrentSpeed() != 0) {
             throw new IllegalStateException("Fordonet är i rörelse, kan inte justera flaket!");
@@ -86,11 +88,6 @@ public class CarTransport extends Car implements HasFlatBed{
     public void gas(double amount) {
         checkRampUp();
         super.gas(amount);
-    }
-
-    @Override
-    public void brake(double amount) {
-        super.brake(amount);
     }
 
 
