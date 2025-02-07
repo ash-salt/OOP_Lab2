@@ -2,8 +2,7 @@ import java.awt.*;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
 
@@ -140,7 +139,7 @@ public class CarTest {
         CarShop<Volvo240> cs = new CarShop<Volvo240>(10, new double[]{0,0});
         Volvo240 v = new Volvo240();
         cs.loadCar(v);
-        assertEquals(true, v.getStored());
+        assertTrue(v.getStored());
         assertEquals(v, cs.getStorage().getFirst());
 
     }

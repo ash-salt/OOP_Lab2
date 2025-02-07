@@ -16,7 +16,7 @@ public class Scania extends Car implements HasFlatBed {
 
     }
 
-    public void checkRampUp() {
+    public void checkRampUp() throws IllegalStateException {
         if (getRampUp()) {
             throw new IllegalStateException("Fordonets flak är tippat! Flaket måste sänkas till 0° innan färd.");
         }
