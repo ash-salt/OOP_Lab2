@@ -38,6 +38,9 @@ public abstract class Car implements Movable{
     }
 
     protected void setStored() {
+        if (stored) {
+            throw new IllegalStateException("A car cannot be stored if it is already stored");
+        }
         stopEngine();
         stored = true;
     }

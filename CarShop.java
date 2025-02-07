@@ -7,6 +7,9 @@ public class CarShop<T extends Car> {
     private ArrayList<T> storage;
 
     public CarShop(int capacity){
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity can not be negative or 0");
+        }
         this.capacity = capacity;
         this.storage = new ArrayList<T>();
     }

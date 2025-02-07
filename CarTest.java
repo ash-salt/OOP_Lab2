@@ -145,4 +145,15 @@ public class CarTest {
 
     }
 
+    @Test
+    public void storeStoredTest() {
+        CarShop<Volvo240> cs = new CarShop<Volvo240>(10);
+        Volvo240 v = new Volvo240();
+        CarTransport ct = new CarTransport();
+        ct.adjustFlatbed();
+        ct.loadCar(v);
+        Exception exception = assertThrows(IllegalStateException.class,
+                () -> cs.loadCar(v));
+        assertEquals("A car cannot be stored if it is already stored", exception.getMessage());
+    }
 }
