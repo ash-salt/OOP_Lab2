@@ -1,13 +1,18 @@
 import java.awt.*;
+import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class CarShop<T extends Car> {
     private final int capacity;
-    private ArrayList<Car> storage;
+    private ArrayList<T> storage;
 
     public CarShop(int capacity){
         this.capacity = capacity;
-        this.storage = new ArrayList<Car>();
+        this.storage = new ArrayList<T>();
+    }
+
+    public ArrayList<T> getStorage() {
+        return storage;
     }
 
     public void loadCar(T car) {

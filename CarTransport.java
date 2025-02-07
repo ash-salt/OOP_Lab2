@@ -33,6 +33,10 @@ public class CarTransport extends Car implements HasFlatBed{
         rampUp = !rampUp;
     }
 
+    public ArrayList<Car> getStorage() {
+        return storage;
+    }
+
     public void loadCar(Car c) {
         double[] transportPos = getPos();
         double[] cPos = c.getPos();

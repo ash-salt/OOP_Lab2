@@ -141,6 +141,7 @@ public class CarTest {
         Volvo240 v = new Volvo240();
         cs.loadCar(v);
         assertEquals(true, v.getStored());
+        assertEquals(v, cs.getStorage().getFirst());
 
     }
 
