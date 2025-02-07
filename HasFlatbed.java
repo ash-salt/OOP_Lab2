@@ -1,9 +1,7 @@
-
-interface HasFlatBed {
+public interface HasFlatbed {
 
     boolean getRampUp();
 
     void adjustFlatbed();
-
-
 }
+

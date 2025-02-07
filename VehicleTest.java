@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CarTest {
+public class VehicleTest {
 
     @Test
     public void gasBrakeTest() {
-        Car c = new Saab95();
-        Car v = new Volvo240();
+        Vehicle c = new Saab95();
+        Vehicle v = new Volvo240();
 
         c.startEngine();
         v.startEngine();
@@ -27,7 +27,7 @@ public class CarTest {
 
     @Test
     public void maxSpeedTest() {
-        Car c = new Saab95();
+        Vehicle c = new Saab95();
         for (int i=0; i<500; i++) {
             c.gas(1);
         }
@@ -36,7 +36,7 @@ public class CarTest {
 
     @Test
     public void illegalArgumentTest() {
-        Car c = new Volvo240();
+        Vehicle c = new Volvo240();
         c.startEngine();
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> c.gas(1000));
@@ -109,8 +109,8 @@ public class CarTest {
 
     @Test
     public void carStoredTest() {
-        Car c = new Volvo240();
-        CarTransport ct = new CarTransport();
+        Vehicle c = new Volvo240();
+        VehicleTransport ct = new VehicleTransport();
 
         ct.adjustFlatbed();
 
@@ -124,7 +124,7 @@ public class CarTest {
     @Test
     public void storeTruckErrorTest() {
         Scania scania = new Scania();
-        CarTransport ct = new CarTransport();
+        VehicleTransport ct = new VehicleTransport();
 
         ct.adjustFlatbed();
 
@@ -148,7 +148,7 @@ public class CarTest {
     public void storeStoredTest() {
         CarShop<Volvo240> cs = new CarShop<Volvo240>(10, new double[]{0,0});
         Volvo240 v = new Volvo240();
-        CarTransport ct = new CarTransport();
+        VehicleTransport ct = new VehicleTransport();
         ct.adjustFlatbed();
         ct.loadCar(v);
         Exception exception = assertThrows(IllegalStateException.class,

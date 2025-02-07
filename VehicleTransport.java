@@ -1,13 +1,13 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarTransport extends Car implements HasFlatBed{
+public class VehicleTransport extends Vehicle implements HasFlatbed{
 
     private final int capacity;
-    private ArrayList<Car> storage;
+    private ArrayList<Vehicle> storage;
     private boolean rampUp;
 
-    public CarTransport() {
+    public VehicleTransport() {
         super(2, 80, Color.gray, "Car Transport");
         this.capacity = 10;
         this.storage = new ArrayList<>();
@@ -33,11 +33,11 @@ public class CarTransport extends Car implements HasFlatBed{
         rampUp = !rampUp;
     }
 
-    public ArrayList<Car> getStorage() {
+    public ArrayList<Vehicle> getStorage() {
         return storage;
     }
 
-    public void loadCar(Car c) {
+    public void loadCar(Vehicle c) {
         double[] transportPos = getPos();
         double[] cPos = c.getPos();
 
@@ -50,10 +50,10 @@ public class CarTransport extends Car implements HasFlatBed{
         else if(Math.abs(transportPos[0] - cPos[0]) > 0.5 || Math.abs(transportPos[1] - cPos[1]) > 0.5) {
             throw new IllegalStateException("Car is too far away");
         }
-        else if (c instanceof HasFlatBed) {
+        else if (c instanceof HasFlatbed) {
             throw new IllegalArgumentException("Vehicle is too large");
         }
-        c.setStored();
+        c.setStored(true);
         storage.add(c);
         c.setPos(getPos());
 
@@ -63,11 +63,11 @@ public class CarTransport extends Car implements HasFlatBed{
         if (!getRampUp()) {
             throw new IllegalStateException("Ramp needs to be extended to perform this action");
         }
-        Car lastCar = storage.getLast();
-        lastCar.setNotStored();
+        Vehicle lastVehicle = storage.getLast();
+        lastVehicle.setStored(false);
         double[] newPos = new double[] {getPos()[0] - 0.25, getPos()[1] - 0.25};
-        lastCar.setPos(newPos);
-        storage.remove(lastCar);
+        lastVehicle.setPos(newPos);
+        storage.remove(lastVehicle);
     }
 
 
@@ -81,8 +81,8 @@ public class CarTransport extends Car implements HasFlatBed{
     public void move() {
         checkRampUp();
         super.move();
-        for (Car car : storage) {
-            car.setPos(getPos());
+        for (Vehicle vehicle : storage) {
+            vehicle.setPos(getPos());
         }
     }
 

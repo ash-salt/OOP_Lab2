@@ -1,7 +1,7 @@
 import java.awt.*;
 
 // Scania är en lastbil med ett flak som ska kunna tippas och sänkas.
-public class Scania extends Car implements HasFlatBed {
+public class Scania extends Vehicle implements HasFlatbed {
 
     // FlatbedAngle betecknar flakets vinkel till lastbilen.
 

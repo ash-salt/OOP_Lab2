@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable{
+public abstract class Vehicle implements Movable{
     //Abstrakt class, kan inte skapa instanser. Tanken är att det inte ska gå att skapa en generisk bil
 
     private final int nrDoors;
@@ -13,7 +13,7 @@ public abstract class Car implements Movable{
     private Direction direction;
     private boolean stored;
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName) {
         //Definierar instansvariabler
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -37,15 +37,13 @@ public abstract class Car implements Movable{
         return stored;
     }
 
-    protected void setStored() {
-        if (stored) {
+    protected void setStored(boolean state) {
+        if (stored && state) {
             throw new IllegalStateException("A car cannot be stored if it is already stored");
         }
         stopEngine();
-        stored = true;
+        stored = state;
     }
-
-    protected void setNotStored() {stored = false;}
 
     private void checkStored() {
         if (getStored()) {

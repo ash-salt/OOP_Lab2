@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class CarShop<T extends Car> {
+public class CarShop<T extends Vehicle> {
     private final int capacity;
     private ArrayList<T> storage;
     private final double[] position;
@@ -26,13 +26,13 @@ public class CarShop<T extends Car> {
         if (storage.size() == capacity) {
             throw new IndexOutOfBoundsException("Shop is already full, please release a car");
         }
-        car.setStored();
+        car.setStored(true);
         car.setPos(getPos());
         storage.add(car);
     }
 
     public void releaseCar(T car) {
-        car.setNotStored();
+        car.setStored(false);
         storage.remove(car);
         double[] newPos = new double[] {getPos()[0] - 0.25, getPos()[1] - 0.25};
         car.setPos(newPos);
