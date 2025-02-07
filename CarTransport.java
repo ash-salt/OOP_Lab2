@@ -53,10 +53,9 @@ public class CarTransport extends Car implements HasFlatBed{
         else if (c instanceof HasFlatBed) {
             throw new IllegalArgumentException("Vehicle is too large");
         }
-
+        c.setStored();
         storage.add(c);
         c.setPos(getPos());
-        c.setStored();
 
     }
 
@@ -65,9 +64,9 @@ public class CarTransport extends Car implements HasFlatBed{
             throw new IllegalStateException("Ramp needs to be extended to perform this action");
         }
         Car lastCar = storage.getLast();
+        lastCar.setNotStored();
         double[] newPos = new double[] {getPos()[0] - 0.25, getPos()[1] - 0.25};
         lastCar.setPos(newPos);
-        lastCar.setNotStored();
         storage.remove(lastCar);
     }
 

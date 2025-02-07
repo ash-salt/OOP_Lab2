@@ -26,8 +26,8 @@ public class CarShop<T extends Car> {
         if (storage.size() == capacity) {
             throw new IndexOutOfBoundsException("Shop is already full, please release a car");
         }
-        car.setPos(getPos());
         car.setStored();
+        car.setPos(getPos());
         storage.add(car);
     }
 
