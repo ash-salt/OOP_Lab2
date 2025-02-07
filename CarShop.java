@@ -1,5 +1,3 @@
-import java.awt.*;
-import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class CarShop<T extends Car> {
