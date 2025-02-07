@@ -137,7 +137,7 @@ public class CarTest {
 
     @Test
     public void CarShopTest() {
-        CarShop<Volvo240> cs = new CarShop<Volvo240>(10);
+        CarShop<Volvo240> cs = new CarShop<Volvo240>(10, new double[]{0,0});
         Volvo240 v = new Volvo240();
         cs.loadCar(v);
         assertEquals(true, v.getStored());
@@ -147,7 +147,7 @@ public class CarTest {
 
     @Test
     public void storeStoredTest() {
-        CarShop<Volvo240> cs = new CarShop<Volvo240>(10);
+        CarShop<Volvo240> cs = new CarShop<Volvo240>(10, new double[]{0,0});
         Volvo240 v = new Volvo240();
         CarTransport ct = new CarTransport();
         ct.adjustFlatbed();
